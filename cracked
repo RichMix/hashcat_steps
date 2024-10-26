@@ -1,0 +1,22 @@
+#Create a Hash File for Each Password In your home directory, create individual files for each hash
+
+echo "insert_hash" > hash1.txt
+echo "insert_hash" > hash2.txt
+echo "insert_hash" > hash3.txt
+
+#Run Hashcat for Each Hash and Use Hashcat to crack each hash one at a time. 
+# For MD5 hashes, specify hash type -m 0 and the RockYou wordlist.
+
+hashcat -m 0 -a 0 -o cracked1.txt hash1.txt /usr/share/wordlists/rockyou.txt
+hashcat -m 0 -a 0 -o cracked2.txt hash2.txt /usr/share/wordlists/rockyou.txt
+hashcat -m 0 -a 0 -o cracked3.txt hash3.txt /usr/share/wordlists/rockyou.txt
+
+#Check the Results - After each command completes, view the output file to see the cracked password:
+
+cat cracked1.txt
+cat cracked2.txt
+cat cracked3.txt
+
+#Each cat command will display the cracked password for its respective hash if found. 
+#This approach will ensure each password is tested individually.
+
